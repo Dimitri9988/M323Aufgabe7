@@ -4,7 +4,7 @@ import createElement from "virtual-dom/create-element";
 
 
 // allows using html tags as functions in javascript
-const { div, button, p, h1, h2, input, table, tr, td} = hh(h);
+const { div, button,  h1, input, table, tr, td} = hh(h);
 
 // A combination of Tailwind classes which represent a (more or less nice) button style
 const btnStyle = "inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline";
@@ -87,21 +87,21 @@ const makeOpenWeaterAPICallDay = async (location) => {
   const URL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APIKEY}&units=metric`
   const response = await fetch(URL);
   const  data = await response.json();
-  const { temp, temp_min, temp_max } = data.main;
+  const { temp, } = data.main;
   return temp;
 }
 const makeOpenWeaterAPICallLow = async (location) => {
   const URL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APIKEY}&units=metric`
   const response = await fetch(URL);
   const  data = await response.json();
-  const { temp, temp_min, temp_max } = data.main;
+  const { temp_min,} = data.main;
   return temp_min;
 }
 const makeOpenWeaterAPICallHige = async (location) => {
   const URL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${APIKEY}&units=metric`
   const response = await fetch(URL);
   const  data = await response.json();
-  const { temp, temp_min, temp_max } = data.main;
+  const { temp_max } = data.main;
   return temp_max;
 }
 
@@ -126,7 +126,7 @@ async function update(msg, model) {
 }
 
 
-// ⚠️ Impure code below (not avoidable but controllable)
+// Impure code below (not avoidable but controllable)
 function app(initModel, update, view, node) {
   let model = initModel;
   let currentView = view(dispatch, model);
@@ -163,12 +163,7 @@ const rootNode = document.getElementById("app");
 app(initModel, update, view, rootNode);
 
 
-const makeAPICall = async () => {
-  const URL = "url...";
-  const data = await response.json()
-  const respons = await fetch(URL);
-  console.log(data.data)
-};
+
 
 
 
