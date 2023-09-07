@@ -1,4 +1,5 @@
 import hh from "hyperscript-helpers";
+import { test } from "ramda";
 import { h, diff, patch } from "virtual-dom";
 import createElement from "virtual-dom/create-element";
 
